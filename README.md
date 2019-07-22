@@ -19,6 +19,9 @@ The end goal of this project is to create an application in which users can ente
  generate significantly greater insights and visualizations for the user. Additionally, it could help inform 
  restaurant owners and provide actionable feedback based on the aggregated reviews. 
  
+ ![goodReviews](https://user-images.githubusercontent.com/14852897/61604854-34193700-ac11-11e9-98ca-6e2823f8816a.JPG)
+![badReviews](https://user-images.githubusercontent.com/14852897/61604855-34193700-ac11-11e9-91ba-67f98fe783c5.JPG)
+
 ![Figure_1](https://user-images.githubusercontent.com/14852897/61604742-c0772a00-ac10-11e9-8b03-74525d90c3cc.png)
 ![Figure_2](https://user-images.githubusercontent.com/14852897/61604748-c40ab100-ac10-11e9-8c0c-ccfa52d586e2.png)
 ![Figure_3](https://user-images.githubusercontent.com/14852897/61604749-c40ab100-ac10-11e9-8087-0ae1c2e6ee0b.png)

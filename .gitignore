@@ -1,0 +1,6 @@
+*.csv
+*/cleaned_csvs/*
+*cleaned_csvs*	
+__pycache__/
+/cleaned_csvs/
+*starter*

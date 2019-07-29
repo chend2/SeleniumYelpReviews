@@ -27,106 +27,106 @@ new_df['month_year'] = new_df.date.dt.to_period('M')
 new_df['year'] = new_df.date.dt.to_period('Y')
 
 ## create dataframe using monthyear and graph # reviews per month year
-gb_df = new_df.groupby('month_year').agg(
-    {'title':['count'],
-     'Status':['sum']})
-gb_df['total'] =gb_df['title']['count']
+# gb_df = new_df.groupby('month_year').agg(
+#     {'title':['count'],
+#      'Status':['sum']})
+# gb_df['total'] =gb_df['title']['count']
 
-gb_df['elites']=gb_df['Status']['sum']
-gb_df['regs']=gb_df['total']-gb_df['elites']
+# gb_df['elites']=gb_df['Status']['sum']
+# gb_df['regs']=gb_df['total']-gb_df['elites']
 
 
-gb_df.plot(y=['regs','elites'], kind='bar', use_index=True, stacked=True, figsize=(16,4), title="Reviews per Month")
+# gb_df.plot(y=['regs','elites'], kind='bar', use_index=True, stacked=True, figsize=(16,4), title="Reviews per Month")
 
 
 
 ## create dataframe using year and graph # reviews per year
 
-gb_y =new_df.groupby('year').agg(
-    {'title':['count'],
-     'Status':['sum']})
+# gb_y =new_df.groupby('year').agg(
+#     {'title':['count'],
+#      'Status':['sum']})
 
 
-gb_y['total'] =gb_y['title']['count']
-gb_y['elites']=gb_y['Status']['sum']
-gb_y['regs']=gb_y['total']-gb_y['elites']
+# gb_y['total'] =gb_y['title']['count']
+# gb_y['elites']=gb_y['Status']['sum']
+# gb_y['regs']=gb_y['total']-gb_y['elites']
 
 
-gb_y.plot(y=['regs','elites'], kind='bar', use_index=True, stacked=True, figsize=(16,4), title="Reviews per Year")
+# gb_y.plot(y=['regs','elites'], kind='bar', use_index=True, stacked=True, figsize=(16,4), title="Reviews per Year")
 
 
 ## create new dataframe grouped by rating and month_year
 # rating separated subplots rating vs time
 
-gb_rd=new_df.groupby(['rating','month_year']).agg({'title':['count'],'Status':['sum']})
-gb_rd['elite']=gb_rd['Status']['sum']
-gb_rd['total']=gb_rd['title']['count']
-gb_rd['regs'] = gb_rd['total']-gb_rd['elite']
-gb_rd =gb_rd.reset_index()
+# gb_rd=new_df.groupby(['rating','month_year']).agg({'title':['count'],'Status':['sum']})
+# gb_rd['elite']=gb_rd['Status']['sum']
+# gb_rd['total']=gb_rd['title']['count']
+# gb_rd['regs'] = gb_rd['total']-gb_rd['elite']
+# gb_rd =gb_rd.reset_index()
 
-g = sns.catplot(x="month_year", y="total", col="rating", data=gb_rd, kind="bar", palette="Reds")
+# g = sns.catplot(x="month_year", y="total", col="rating", data=gb_rd, kind="bar", palette="Reds")
 
 ## create new dataframe grouped by rating and year
 # rating separated subplots rating vs time
 
-gb_ry=new_df.groupby(['rating','year']).agg({'title':['count'],'Status':['sum']})
-gb_ry['elite']=gb_ry['Status']['sum']
-gb_ry['total']=gb_ry['title']['count']
-gb_ry['regs'] = gb_ry['total']-gb_ry['elite']
-gb_ry =gb_ry.reset_index()
+# gb_ry=new_df.groupby(['rating','year']).agg({'title':['count'],'Status':['sum']})
+# gb_ry['elite']=gb_ry['Status']['sum']
+# gb_ry['total']=gb_ry['title']['count']
+# gb_ry['regs'] = gb_ry['total']-gb_ry['elite']
+# gb_ry =gb_ry.reset_index()
 
-g = sns.catplot(x="year", y="total", col="rating", data=gb_ry, kind="bar", palette="Reds")
+# g = sns.catplot(x="year", y="total", col="rating", data=gb_ry, kind="bar", palette="Reds")
 
 ## creates two dataframes one by year and the other by monthyear 
 ## plots sublots reviews vs year/month_year per rating
 
-gb__ = new_df.copy()
-gb__['count']  = gb__.apply(lambda x: 1, axis = 1) 
+# gb__ = new_df.copy()
+# gb__['count']  = gb__.apply(lambda x: 1, axis = 1) 
 
-gb__rd_= gb__.groupby(['rating' ,'month_year']).agg({'count': ['count']})
-gb__rd_=gb__rd_.reset_index()
-gb__rd_['new_count'] =gb__rd_['count']['count']
-g = sns.catplot(x="month_year", y="new_count", col="rating", data=gb__rd_, kind="bar", palette="Reds")
+# gb__rd_= gb__.groupby(['rating' ,'month_year']).agg({'count': ['count']})
+# gb__rd_=gb__rd_.reset_index()
+# gb__rd_['new_count'] =gb__rd_['count']['count']
+# g = sns.catplot(x="month_year", y="new_count", col="rating", data=gb__rd_, kind="bar", palette="Reds")
 
 
-gb__ry= gb__.groupby(['rating' ,'year']).agg({'count': ['count']})
-gb__ry= gb__ry.reset_index()
-gb__ry['new_count'] =gb__ry['count']['count']
-g = sns.catplot(x="year", y="new_count", col="rating", data=gb__ry, kind="bar", palette="Reds")
+# gb__ry= gb__.groupby(['rating' ,'year']).agg({'count': ['count']})
+# gb__ry= gb__ry.reset_index()
+# gb__ry['new_count'] =gb__ry['count']['count']
+# g = sns.catplot(x="year", y="new_count", col="rating", data=gb__ry, kind="bar", palette="Reds")
 
 ## daaframe for plotting avg vs year/month_year
 
-new_df_2 = new_df.copy()
-new_df_2y = new_df_2.groupby(['year']).mean()
-new_df_2y.plot(y='rating', use_index=True, kind='line', figsize=(16,4), ylim =(2,5.5), title="Total rating in Years")
+# new_df_2 = new_df.copy()
+# new_df_2y = new_df_2.groupby(['year']).mean()
+# new_df_2y.plot(y='rating', use_index=True, kind='line', figsize=(16,4), ylim =(2,5.5), title="Total rating in Years")
 
-new_df_2my = new_df_2.groupby(['month_year']).mean()
-new_df_2my.plot(y='rating', use_index=True, kind='line', figsize=(16,4), ylim =(2,5.5), title="Total rating in Years")
+# new_df_2my = new_df_2.groupby(['month_year']).mean()
+# new_df_2my.plot(y='rating', use_index=True, kind='line', figsize=(16,4), ylim =(2,5.5), title="Total rating in Years")
 
 
 ## dataframes and plotting for avg elite and regular rating over time (year)
 
-new_df_ds = new_df_2.groupby(['Status','year']).agg({'rating':['mean']})
-new_df_ds =new_df_ds.reset_index()
-new_df_reg = new_df_ds.loc[new_df_ds['Status']==0]
-new_df_elite = new_df_ds.loc[new_df_ds['Status']==1]
-new_df_reg = new_df_reg.set_index('year')
-new_df_elite = new_df_elite.set_index('year')
-new_df_reg['reg_rating'] = new_df_reg['rating']['mean']
-new_df_elite['el_rating'] = new_df_elite['rating']['mean']
-new_df_reg['el_rating'] = new_df_elite['el_rating']
-new_df_reg = new_df_reg.reset_index()
+# new_df_ds = new_df_2.groupby(['Status','year']).agg({'rating':['mean']})
+# new_df_ds =new_df_ds.reset_index()
+# new_df_reg = new_df_ds.loc[new_df_ds['Status']==0]
+# new_df_elite = new_df_ds.loc[new_df_ds['Status']==1]
+# new_df_reg = new_df_reg.set_index('year')
+# new_df_elite = new_df_elite.set_index('year')
+# new_df_reg['reg_rating'] = new_df_reg['rating']['mean']
+# new_df_elite['el_rating'] = new_df_elite['rating']['mean']
+# new_df_reg['el_rating'] = new_df_elite['el_rating']
+# new_df_reg = new_df_reg.reset_index()
 
-new_df_reg.plot(x='year', y=['reg_rating','el_rating'], kind='line', figsize=(16,4), ylim =(2,5.5), title="Regular vs Elite rating in Years")
+# new_df_reg.plot(x='year', y=['reg_rating','el_rating'], kind='line', figsize=(16,4), ylim =(2,5.5), title="Regular vs Elite rating in Years")
 
 
 ### Seaborn Pearson Corr Heatmap ###
-pearson_df = new_df
-pearson_df = pearson_df.drop(columns=["title","date","text","month_year","year"])
-plt.figure(figsize=(12,10))
-cor = pearson_df.corr()
-sns.heatmap(cor, annot=True, cmap=plt.cm.Reds)
-plt.show()
+# pearson_df = new_df
+# pearson_df = pearson_df.drop(columns=["title","date","text","month_year","year"])
+# plt.figure(figsize=(12,10))
+# cor = pearson_df.corr()
+# sns.heatmap(cor, annot=True, cmap=plt.cm.Reds)
+# plt.show()
 
 
 
